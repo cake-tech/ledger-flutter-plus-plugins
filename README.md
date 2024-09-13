@@ -4,7 +4,7 @@
     <img src="https://cdn1.iconfinder.com/data/icons/minicons-4/64/ledger-512.png" width="100"/>
   </a>
 
-<h1 align="center">ledger-litecoin</h1>
+<h1 align="center">ledger-flutter-plus</h1>
 
 <p align="center">
     A collection of Flutter plugins to scan, connect & sign transactions using Ledger devices using USB & BLE

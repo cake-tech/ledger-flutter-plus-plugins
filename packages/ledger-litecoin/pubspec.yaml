@@ -1,0 +1,27 @@
+name: ledger_litecoin
+description: A Ledger App Plugin for Litecoin and Bitcoin Cash
+version: 0.0.1
+repository: https://github.com/cake-tech/ledger-litecoin
+
+environment:
+  sdk: ^3.0.6
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  bs58check: ^1.0.2
+  convert: ^3.1.1
+  dart_varuint_bitcoin: ^1.0.3
+  http: ^1.1.0
+  ledger_flutter_plus:
+    git:
+      url: https://github.com/cake-tech/ledger-flutter-plus
+      ref: cake-v1
+  logging: ^1.2.0
+  pointycastle: ^3.9.1
+
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0

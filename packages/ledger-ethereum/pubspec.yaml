@@ -1,0 +1,23 @@
+name: ledger_ethereum
+description: A Ledger App Plugin for Ethereum
+version: 0.0.4
+repository: https://github.com/cake-tech/ledger-ethereum
+
+environment:
+  sdk: ^3.0.6
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  convert: ^3.1.1
+  http: ^1.1.0
+  ledger_flutter_plus:
+    git:
+      url: https://github.com/cake-tech/ledger-flutter-plus
+      ref: cake-v1
+
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0

@@ -1,0 +1,19 @@
+name: ledger_core
+description: A Ledger App Plugin for managing ledger devices
+version: 0.0.1
+repository: https://github.com/cake-tech/ledger-flutter-plus-plugins
+
+environment:
+  sdk: ^3.0.6
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ledger_flutter_plus: ^1.2.3
+  logging: ^1.2.0
+
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0

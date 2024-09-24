@@ -1,6 +1,6 @@
 name: ledger_bitcoin
 description: A Ledger App Plugin for Bitcoin
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/cake-tech/ledger-bitcoin
 
 environment:

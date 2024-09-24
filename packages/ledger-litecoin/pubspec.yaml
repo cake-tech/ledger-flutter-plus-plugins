@@ -1,6 +1,6 @@
 name: ledger_litecoin
 description: A Ledger App Plugin for Litecoin and Bitcoin Cash
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/cake-tech/ledger-litecoin
 
 environment:

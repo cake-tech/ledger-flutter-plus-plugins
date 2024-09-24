@@ -14,10 +14,7 @@ dependencies:
   convert: ^3.1.1
   dart_varuint_bitcoin: ^1.0.3
   http: ^1.1.0
-  ledger_flutter_plus:
-    git:
-      url: https://github.com/cake-tech/ledger-flutter-plus
-      ref: cake-v1
+  ledger_flutter_plus: ^1.2.4
   logging: ^1.2.0
   pointycastle: ^3.9.1
 

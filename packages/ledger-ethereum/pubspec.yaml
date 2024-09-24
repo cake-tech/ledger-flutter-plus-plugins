@@ -12,10 +12,7 @@ dependencies:
     sdk: flutter
   convert: ^3.1.1
   http: ^1.1.0
-  ledger_flutter_plus:
-    git:
-      url: https://github.com/cake-tech/ledger-flutter-plus
-      ref: cake-v1
+  ledger_flutter_plus: ^1.2.4
 
 
 dev_dependencies:

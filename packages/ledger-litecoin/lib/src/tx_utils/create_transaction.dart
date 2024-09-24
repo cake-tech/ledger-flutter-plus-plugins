@@ -37,7 +37,28 @@ Future<String> createTransaction(
   List<String> additionals = const [],
   String? changePath,
   int? lockTime,
+  void Function(double progress, int total, int index)? onDeviceStreaming,
+  void Function()? onDeviceSignatureRequested,
 }) async {
+  // loop: 0 or 1 (before and after)
+  // i: index of the input being streamed
+  // i goes on 0...n, including n. in order for the progress value to go to 1
+  // we normalize the 2 loops to make a global percentage
+  void notify(int loop, int i) {
+    // if (length < 3) {
+    //   return; // there is not enough significant event to worth notifying (aka just use a spinner)
+    // }
+
+    final index = inputs.length * loop + i;
+    final total = 2 * inputs.length;
+    final progress = index / total;
+    onDeviceStreaming?.call(
+      progress,
+      total,
+      index.toInt(),
+    );
+  }
+
   final bech32 = isSegWit && additionals.contains("bech32");
   final useBip143 = isSegWit || additionals.contains("bip143");
 
@@ -56,6 +77,8 @@ Future<String> createTransaction(
   final resuming = false;
   final targetTransaction = Transaction(version: defaultVersion.toBytes());
   final outputScript = serializeTransactionOutputs(outputs);
+
+  notify(0, 0);
 
   for (final inputData in inputs) {
     final inputTx = Transaction.fromRaw(inputData.rawTx);
@@ -85,6 +108,8 @@ Future<String> createTransaction(
     return TransactionInput(nullPrevout, nullScript, sequence.toBytes());
   }).toList();
 
+  onDeviceSignatureRequested?.call();
+
   if (useBip143) {
     // Do the first run with all inputs
     await startUntrustedHashTransactionInput(
@@ -99,7 +124,8 @@ Future<String> createTransaction(
     );
 
     if (!resuming && changePath != null) {
-      await provideOutputFullChangePath(connection, transformer, path: changePath);
+      await provideOutputFullChangePath(connection, transformer,
+          path: changePath);
     }
 
     await hashOutputFull(connection, transformer, outputScript: outputScript);
@@ -143,11 +169,14 @@ Future<String> createTransaction(
 
     if (!useBip143) {
       if (!resuming && changePath != null) {
-        await provideOutputFullChangePath(connection, transformer, path: changePath);
+        await provideOutputFullChangePath(connection, transformer,
+            path: changePath);
       }
 
       await hashOutputFull(connection, transformer, outputScript: outputScript);
     }
+
+    if (firstRun) notify(1, 0);
 
     final signature = await signTransaction(
       connection,
@@ -156,9 +185,12 @@ Future<String> createTransaction(
       lockTime: lockTime ?? 0,
       sigHashType: sigHashType,
     );
+    notify(1, i + 1);
 
     signatures.add(signature);
     targetTransaction.inputs[i].script = nullScript;
+
+    if (firstRun) firstRun = false;
   }
 
   // Populate the final input scripts

@@ -108,6 +108,8 @@ class LitecoinLedgerApp {
     List<String> additionals = const [],
     String? changePath,
     int? lockTime,
+    void Function(int progress, int total, int index)? onDeviceStreaming,
+    void Function()? onDeviceSignatureRequested,
   }) =>
       tx.createTransaction(
         connection,

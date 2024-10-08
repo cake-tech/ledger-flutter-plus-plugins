@@ -1,11 +1,11 @@
 import 'dart:typed_data';
 
 enum PSBTGlobal {
-  txVersion(0x02),
-  fallbackLocktime(0x03),
-  inputCount(0x04),
-  outputCount(0x05),
-  txModifiable(0x06),
+  txVersion(0x02),  // Exclude for v0
+  fallbackLocktime(0x03), // Exclude for v0
+  inputCount(0x04), // Exclude for v0
+  outputCount(0x05), // Exclude for v0
+  txModifiable(0x06), // Exclude for v0
   version(0xfb);
 
   const PSBTGlobal(this.value);
@@ -22,9 +22,9 @@ enum PSBTIn {
   bip32Derivation(0x06),
   finalScriptsig(0x07),
   finalScriptwitness(0x08),
-  previousTXID(0x0e),
-  outputIndex(0x0f),
-  sequence(0x10),
+  previousTXID(0x0e), // Exclude for v0
+  outputIndex(0x0f), // Exclude for v0
+  sequence(0x10), // Exclude for v0
   tapKeySig(0x13),
   tapBip32Derivation(0x16);
 
@@ -36,8 +36,8 @@ enum PSBTIn {
 enum PSBTOut {
   redeemScript(0x00),
   bip32Derivation(0x02),
-  amount(0x03),
-  script(0x04),
+  amount(0x03), // Exclude for v0
+  script(0x04), // Exclude for v0
   tapBip32Derivation(0x07);
 
   const PSBTOut(this.value);

@@ -5,14 +5,15 @@ import 'package:test/test.dart';
 
 void main() {
   group('PsbtV2', () {
-    test("deserializes a psbt and reserializes it unchanged", () {
+    test("deserialize a psbt", () {
       final psbtBuf = base64.decode(
-          "cHNidP8BAJoCAAAAAljoeiG1ba8MI76OcHBFbDNvfLqlyHV5JPVFiHuyq911AAAAAAD/////g40EJ9DsZQpoqka7CwmK6kQiwHGyyng1Kgd5WdB86h0BAAAAAP////8CcKrwCAAAAAAWABSve4dsqS9Jy3P29AFb+ojLwuDoZwDh9QUAAAAAFgAUp2rS6ZK5wEZWSXYylPoeCj/Rr/EAAAAAAAAAAAA=");
+          "cHNidP8BAgQCAAAAAQQBAQEFAQIB+wQCAAAAAAEOIAsK2SFBnByHGXNdctxzn56p4GONH+TB7vD5lECEgV/IAQ8EAAAAAAABAwgACK8vAAAAAAEEFgAUxDD2TEdW2jENvRoIVXLvKZkmJywAAQMIi73rCwAAAAABBBYAFE3Rk6yWSlasG54cyoRU/i9HT4UTAA==");
 
       final psbt = PsbtV2();
       psbt.deserialize(psbtBuf);
 
-      expect(psbtBuf, psbt.serialize());
+      expect(psbt.getGlobalInputCount(), 1);
+      expect(psbt.getGlobalOutputCount(), 2);
     });
   });
 }

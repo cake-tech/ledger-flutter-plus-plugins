@@ -185,20 +185,19 @@ packages:
   ledger_flutter_plus:
     dependency: "direct main"
     description:
-      path: "."
-      ref: cake-v1
-      resolved-ref: b95aa11489abf3c2c8ab65c6d874237e3bf23479
-      url: "https://github.com/cake-tech/ledger-flutter-plus"
-    source: git
-    version: "1.2.0"
+      name: ledger_flutter_plus
+      sha256: e314582adfb56effe09d3261cd3035c28a57433dc8d6b5c7c5ef7af930211aeb
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   ledger_usb_plus:
     dependency: transitive
     description:
       name: ledger_usb_plus
-      sha256: f9f88253ca6d93559009b086ff45f0a4a0b34c1df477f653c59bc32562d16c65
+      sha256: "21cc5d976cf7edb3518bd2a0c4164139cbb0817d2e4f2054707fc4edfdf9ce87"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.4"
   lints:
     dependency: "direct dev"
     description:
@@ -440,10 +439,10 @@ packages:
     dependency: transitive
     description:
       name: universal_ble
-      sha256: "0dfbd6b64bff3ad61ed7a895c232530d9614e9b01ab261a74433a43267edb7f3"
+      sha256: "4d8f48dd09dbaf9c5b079e77924df78cc7c276d634183919160314edc22d7c76"
       url: "https://pub.dev"
     source: hosted
-    version: "0.12.0"
+    version: "0.13.0"
   universal_platform:
     dependency: transitive
     description:

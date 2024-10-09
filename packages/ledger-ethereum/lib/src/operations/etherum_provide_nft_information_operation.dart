@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:convert/convert.dart';
 import 'package:ledger_ethereum/src/ledger/ethereum_instructions.dart';
 import 'package:ledger_ethereum/src/ledger/ledger_input_operation.dart';
 import 'package:ledger_flutter_plus/ledger_flutter_plus_dart.dart';

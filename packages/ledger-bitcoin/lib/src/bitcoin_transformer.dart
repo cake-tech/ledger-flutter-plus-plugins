@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:convert/convert.dart';
 import 'package:ledger_flutter_plus/ledger_flutter_plus_dart.dart';
 
 class BitcoinTransformer extends LedgerTransformer {

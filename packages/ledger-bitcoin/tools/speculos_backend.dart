@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:convert/convert.dart';
 import 'package:http/http.dart' as http;
 import 'package:ledger_bitcoin/src/bitcoin_transformer.dart';
 import 'package:ledger_bitcoin/src/client_command_interpreter.dart';
@@ -227,7 +226,7 @@ class SpeculosBitcoinLedgerApp {
   }
 }
 
-Future<T> sendOperation<T>(LedgerOperation<T> operation,
+Future<T> sendOperation<T>(LedgerRawOperation<T> operation,
     {LedgerTransformer? transformer}) async {
   final writer = ByteDataWriter();
   await operation.write(writer);
@@ -254,7 +253,7 @@ Future<Map<String, dynamic>> sendReq(String payload) async {
   return jsonDecode(res.body);
 }
 
-Future<Uint8List> runFlow(LedgerOperation<Uint8List> operation,
+Future<Uint8List> runFlow(LedgerRawOperation<Uint8List> operation,
     ClientCommandInterpreter cci) async {
   var response = await sendOperation<Uint8List>(operation);
 

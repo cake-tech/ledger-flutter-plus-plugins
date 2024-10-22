@@ -14,7 +14,7 @@
 
 ## Overview
 
-Ledger Nano devices are the perfect hardware wallets for managing your crypto & NFTs on the go.
+Ledger devices are the perfect hardware wallets for managing your crypto & NFTs on the go.
 This Flutter package is a plugin for the [ledger_flutter_plus](https://pub.dev/packages/ledger_flutter_plus) package to get accounts and sign transactions using the 
 Nano blockchain.
 
@@ -41,7 +41,7 @@ final app = NanoLedgerApp(connection);
 ### Get public keys
 
 Depending on the required blockchain and Ledger Application Plugin, the `getAccounts()` method can be used to fetch the 
-public keys from the Ledger Nano device.
+public keys from the Ledger device.
 
 Based on the implementation and supported protocol, there might be only one public key in the list of accounts.
 

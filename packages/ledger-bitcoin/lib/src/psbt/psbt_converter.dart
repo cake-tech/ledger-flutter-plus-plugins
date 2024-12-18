@@ -32,7 +32,7 @@ extension V0Serializer on PsbtV2 {
     final sGlobalMap = Map.from(globalMap)
       ..removeWhere((k, v) => excludedGlobalKeyTypes.contains(k));
 
-    sGlobalMap["00"] = extractUnsignedTX();
+    sGlobalMap["00"] = extractUnsignedTX(false);
 
     sGlobalMap.serializeMap(buf);
     for (final map in inputMaps) {
@@ -48,10 +48,10 @@ extension V0Serializer on PsbtV2 {
     return buf.buffer();
   }
 
-  Uint8List extractUnsignedTX() {
+  Uint8List extractUnsignedTX([bool withSegwit = true]) {
     final tx = BufferWriter()..writeUInt32(getGlobalTxVersion());
 
-    final isSegwit = getInputWitnessUtxo(0) != null;
+    final isSegwit = getInputWitnessUtxo(0) != null && withSegwit;
     if (isSegwit) {
       tx.writeSlice(Uint8List.fromList([0, 1]));
     }

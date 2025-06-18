@@ -19,7 +19,7 @@ class EthereumTransformer extends LedgerTransformer {
         return Uint8List.fromList([]);
       }
 
-      throw Exception(errorCode);
+      throw Exception(hex.encode(lastItem));
     }
 
     final output = <Uint8List>[];

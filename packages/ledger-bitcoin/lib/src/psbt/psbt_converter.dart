@@ -1,6 +1,7 @@
 import "dart:typed_data";
 
 import "package:ledger_bitcoin/src/psbt/constants.dart";
+import "package:ledger_bitcoin/src/psbt/keypair.dart";
 import "package:ledger_bitcoin/src/psbt/map_extension.dart";
 import "package:ledger_bitcoin/src/psbt/psbtv2.dart";
 import "package:ledger_bitcoin/src/utils/buffer_writer.dart";
@@ -13,18 +14,18 @@ extension V0Serializer on PsbtV2 {
       PSBTGlobal.inputCount,
       PSBTGlobal.outputCount,
       PSBTGlobal.txModifiable,
-    ].map((e) => e.value.toString());
+    ].map((e) => Key(e.value, Uint8List(0)).toString());
 
     final excludedInputKeyTypes = [
       PSBTIn.previousTXID,
       PSBTIn.outputIndex,
       PSBTIn.sequence,
-    ].map((e) => e.value.toString());
+    ].map((e) => Key(e.value, Uint8List(0)).toString());
 
     final excludedOutputKeyTypes = [
       PSBTOut.amount,
       PSBTOut.script,
-    ].map((e) => e.value.toString());
+    ].map((e) => Key(e.value, Uint8List(0)).toString());
 
     final buf = BufferWriter()..writeSlice(psbtMagicBytes);
 

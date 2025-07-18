@@ -38,7 +38,8 @@ enum PSBTOut {
   bip32Derivation(0x02),
   amount(0x03), // Exclude for v0
   script(0x04), // Exclude for v0
-  tapBip32Derivation(0x07);
+  tapBip32Derivation(0x07),
+  dnssecProof(0x35);
 
   const PSBTOut(this.value);
 

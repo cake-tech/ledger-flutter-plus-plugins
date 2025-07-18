@@ -220,10 +220,10 @@ class PsbtV2 {
       _decodeTapBip32Derivation(
           _getOutput(outputIndex, PSBTOut.tapBip32Derivation, pubkey));
 
-  void setDNSSECProof(int outputIndex, Uint8List dnssecProof) =>
+  void setOutputDNSSECProof(int outputIndex, Uint8List dnssecProof) =>
       _setOutput(outputIndex, PSBTOut.dnssecProof, _b(), dnssecProof);
 
-  Uint8List getDNSSECProof(int outputIndex) =>
+  Uint8List getOutputDNSSECProof(int outputIndex) =>
       _getOutput(outputIndex, PSBTOut.dnssecProof, _b());
 
   void deleteInputEntries(int inputIndex, List<PSBTIn> keyTypes) {

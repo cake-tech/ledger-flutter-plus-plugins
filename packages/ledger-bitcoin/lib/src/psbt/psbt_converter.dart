@@ -30,10 +30,13 @@ extension V0Serializer on PsbtV2 {
     final buf = BufferWriter()..writeSlice(psbtMagicBytes);
 
     setGlobalPsbtVersion(0);
-    final sGlobalMap = Map.from(globalMap)
-      ..removeWhere((k, v) => excludedGlobalKeyTypes.contains(k));
+    final sGlobalMap = <String, Uint8List>{"00": extractUnsignedTX(false)};
 
-    sGlobalMap["00"] = extractUnsignedTX(false);
+    for (final key in globalMap.keys) {
+      if (!excludedGlobalKeyTypes.contains(key)) {
+        sGlobalMap[key] = globalMap[key]!;
+      }
+    }
 
     sGlobalMap.serializeMap(buf);
     for (final map in inputMaps) {

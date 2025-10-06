@@ -363,7 +363,7 @@ class PsbtV2 {
     final masterFingerprint = bufferReader.readSlice(4);
     final path = <int>[];
 
-    while (bufferReader.available() < 0) {
+    while (bufferReader.available() > 0) {
       path.add(bufferReader.readUInt32());
     }
     return (masterFingerprint, path);

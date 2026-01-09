@@ -28,7 +28,7 @@ class BitcoinLedgerApp {
   BitcoinTransformer transformer;
   final LedgerConnection connection;
 
-  final String derivationPath;
+  String derivationPath;
 
   BitcoinLedgerApp(
     this.connection, {

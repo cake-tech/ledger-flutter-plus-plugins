@@ -36,7 +36,8 @@ class BitcoinLedgerApp {
     this.derivationPath = "m/84'/0'/0'/0/0",
   });
 
-  Future<List<String>> getAccounts({String? accountsDerivationPath}) async {
+  Future<List<String>> getAccounts(
+      {String? accountsDerivationPath, bool display = false}) async {
     final bipPath =
         BIPPath.fromString(accountsDerivationPath ?? derivationPath);
     final masterFingerprint = await getMasterFingerprint();
@@ -48,7 +49,7 @@ class BitcoinLedgerApp {
       accountXPub: accountXPub,
       masterFingerprint: masterFingerprint,
       descrTempl: "wpkh(@0)",
-      display: false,
+      display: display,
     );
     return [addr.toAsciiString()];
   }
